@@ -9,7 +9,9 @@
         "isDirectory": true,
         "children": [
           "d849caa0-e8cb-4d51-8a32-4b1a0081d889",
-          "7b4c3441-ed23-4ba1-863c-6f79e3b73cf3"
+          "7b4c3441-ed23-4ba1-863c-6f79e3b73cf3",
+          "9b1ec3c0-d4f4-4ea3-b63b-80ad295926b4",
+          "5700973c-4857-44d8-a75c-80e0d98c288c"
         ],
         "isRemovable": false,
         "filePath": "hiru-1126-gcp"
@@ -58,7 +60,7 @@
         "children": [],
         "isRemovable": false,
         "filePath": "main.py",
-        "code": "# This file is used to register all your cloud functions in GCP.\n# DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\n"
+        "code": "# This file is used to register all your cloud functions in GCP.\n# DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\nfrom hiru-1126-gcp.python import handler as hiru1126Gcppython"
       },
       "7b4c3441-ed23-4ba1-863c-6f79e3b73cf3": {
         "id": "7b4c3441-ed23-4ba1-863c-6f79e3b73cf3",
@@ -70,13 +72,48 @@
         "isRemovable": true,
         "filePath": "hiru-1126-gcp/Authorizer.js",
         "code": "const google = require(\"googleapis\").google;\n\ngoogle.options({auth: new google.auth.Compute()});"
+      },
+      "9b1ec3c0-d4f4-4ea3-b63b-80ad295926b4": {
+        "id": "9b1ec3c0-d4f4-4ea3-b63b-80ad295926b4",
+        "parent": "e4e6aa6f-d097-4707-9e69-583841fbd077",
+        "name": "python.py",
+        "type": "PYTHON_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "hiru-1126-gcp/python.py",
+        "code": "def handler(request):\n    \n    return \"Successfully executed\"\n",
+        "config": {
+          "runtime": "python37",
+          "timeout": 60,
+          "memory": 128,
+          "triggerType": 0
+        },
+        "triggers": [
+          {
+            "resourceName": "http-trigger",
+            "config": {}
+          }
+        ]
+      },
+      "5700973c-4857-44d8-a75c-80e0d98c288c": {
+        "id": "5700973c-4857-44d8-a75c-80e0d98c288c",
+        "parent": "e4e6aa6f-d097-4707-9e69-583841fbd077",
+        "name": "__init__.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "hiru-1126-gcp/__init__.py",
+        "code": ""
       }
     },
     "rootNode": "e4e6aa6f-d097-4707-9e69-583841fbd077",
     "openFiles": [
-      "d849caa0-e8cb-4d51-8a32-4b1a0081d889"
+      "d849caa0-e8cb-4d51-8a32-4b1a0081d889",
+      "9b1ec3c0-d4f4-4ea3-b63b-80ad295926b4"
     ],
-    "currentFileId": "d849caa0-e8cb-4d51-8a32-4b1a0081d889",
+    "currentFileId": "9b1ec3c0-d4f4-4ea3-b63b-80ad295926b4",
     "resources": {
       "http-trigger": {
         "name": "http-trigger",
@@ -98,7 +135,16 @@
       "dialect": null,
       "definitions": null
     },
-    "envVariables": [],
+    "envVariables": [
+      {
+        "lambdaId": "9b1ec3c0-d4f4-4ea3-b63b-80ad295926b4",
+        "varKey": "PYTHONPATH",
+        "varValue": "/var/runtime:/var/task/hiru-1126-gcp",
+        "shouldPersist": true,
+        "displayOnly": false,
+        "editable": true
+      }
+    ],
     "packageJSON": {
       "dependencies": {
         "googleapis": {
@@ -118,7 +164,7 @@
     "projectRegion": "us-east1",
     "platform": "GCP",
     "platformRegions": {},
-    "lastSave": 1574745232626
+    "lastSave": 1574746831267
   },
   "VCS_STATE": {
     "provider": "GitHub",

@@ -25,7 +25,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "hiru-1126-gcp/function.js",
-        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (request, response) {\n    storage.objects.list({\n        bucket: 'hirutest01',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data); \n            response.send({ \"message\": response.data });          // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    \n}",
+        "code": "let SL_XML = require('slappforge-sdk-xml');\nlet google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (request, response) {\n    storage.objects.list({\n        bucket: 'hirutest01',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data); \n            response.send({ \"message\": response.data });          // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    \n}",
         "config": {
           "runtime": "nodejs8",
           "timeout": 60,
@@ -153,6 +153,13 @@
           "version": "29.0.0",
           "dev": false,
           "notRemovable": false
+        },
+        "slappforge-sdk-xml": {
+          "name": "slappforge-sdk-xml",
+          "language": "javascript",
+          "version": "0.0.5",
+          "dev": false,
+          "notRemovable": false
         }
       }
     }
@@ -164,7 +171,7 @@
     "projectRegion": "us-east1",
     "platform": "GCP",
     "platformRegions": {},
-    "lastSave": 1574746831267
+    "lastSave": 1574756887024
   },
   "VCS_STATE": {
     "provider": "GitHub",

@@ -2,7 +2,8 @@
   "name": "hiru-1126-gcp",
   "version": "1.0.0",
   "dependencies": {
-    "googleapis": "29.0.0"
+    "googleapis": "29.0.0",
+    "slappforge-sdk-xml": "0.0.5"
   },
   "devDependencies": {}
 }

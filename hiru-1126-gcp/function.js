@@ -1,3 +1,4 @@
+let SL_XML = require('slappforge-sdk-xml');
 let google = require('googleapis').google;
 let _auth = require('./Authorizer');
 const storage = google.storage('v1');
